@@ -2,11 +2,12 @@
 #define __HTTP_REQUEST_H_
 
 #include <core_types.h>
+#include <core_allocator.h>
 
 #include <http_headers.h>
 
 #ifndef HTTP_REQMAXSIZE
-#   define HTTP_REQMAXSIZE KiB(5)
+#   define HTTP_REQMAXSIZE KiB(4)
 #endif
 
 enum HttpMethod {

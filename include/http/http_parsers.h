@@ -3,9 +3,10 @@
 
 #include <core_types.h>
 #include <core_string.h>
+#include <core_allocator.h>
 
 #include <http_request.h>
 
-extern boolean http_parse_request(i64 connection, struct HttpRequest *request);
+extern boolean http_parse_request(i64 connection, struct HttpRequest *request, struct MemoryBlock *block);
 
 #endif /* __HTTP_PARSERS_H__ */

@@ -250,7 +250,7 @@ static struct BodyReadInfo http_read_body(struct HttpHeader *header, u32 header_
 }
 
 
-boolean http_parse_request(i64 connection, struct HttpRequest *request) {
+boolean http_parse_request(i64 connection, struct HttpRequest *request, struct MemoryBlock *block) {
 
     /*
      * Read raw request metadata into a buffer
@@ -259,7 +259,9 @@ boolean http_parse_request(i64 connection, struct HttpRequest *request) {
      * is parsed.
      */
 
-    u8 request_lit[HTTP_REQMAXSIZE + 1];
+    u8 *request_lit = memblock_alloc(block, HTTP_REQMAXSIZE + 1);
+    if (request_lit == NULL)
+        return FALSE;
 
     struct MetadataReadInfo metadata_info = http_read_metadata(connection, request_lit, HTTP_REQMAXSIZE);
     if (metadata_info.total_bytes == 0) {

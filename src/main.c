@@ -113,7 +113,7 @@ static void *http_connection_handler(void *arg) {
     struct HttpRequest request = {0};
     struct HttpResponse response = {0};
     
-    boolean good_request = http_parse_request(conn_args->client_fd, &request);
+    boolean good_request = http_parse_request(conn_args->client_fd, &request, block);
     if (!good_request) {
         response.status = STATUS_400;
         goto send_response;

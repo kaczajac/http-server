@@ -6,11 +6,11 @@
 #include <core_types.h>
 
 #ifndef MEMPOOL_BLKCAP
-#   define MEMPOOL_BLKCAP 4 << 10
+#   define MEMPOOL_BLKCAP KiB(5)
 #endif
 
 #ifndef MEMPOOL_BLKCNT
-#   define MEMPOOL_BLKCNT 10
+#   define MEMPOOL_BLKCNT 5
 #endif 
 
 struct MemoryBlock {
